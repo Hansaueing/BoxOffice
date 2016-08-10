@@ -62,9 +62,9 @@ public class RealTimeBOAdadapter extends BaseAdapter{
 		}
 		
 		holder.tvMovieName.setText(info.getMovieName());
-		holder.tvBoxOfficeToday.setText("ÈÕÆ±·¿:"+info.getBoxOfficeToday()+"Íò");
-		holder.tvBoxOfficeTotal.setText("×ÜÆ±·¿:"+info.getBoxOfficeTotal()+"Íò");
-		holder.tvBeOnDays.setText("ÒÑÉÏÓ³"+info.getBeOnDays()+"Ìì");
+		holder.tvBoxOfficeToday.setText("ä»Šå¤©ç¥¨æˆ¿:"+info.getBoxOfficeToday()+"ä¸‡");
+		holder.tvBoxOfficeTotal.setText("æ€»ç¥¨æˆ¿:"+info.getBoxOfficeTotal()+"ä¸‡");
+		holder.tvBeOnDays.setText("ä¸Šæ˜ "+info.getBeOnDays()+"å¤©");
 		
 		return convertView;
 	}

@@ -1,10 +1,9 @@
 package com.boxoffice.entity;
 
-import java.util.Comparator;
 
 /**
- * 封装实时电影信息的实体类
- * 并已上映的天数进行排序
+ * 锟斤拷装实时锟斤拷影锟斤拷息锟斤拷实锟斤拷锟斤拷
+ * 锟斤拷锟斤拷锟斤拷映锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
  * @author Han
  *
  */

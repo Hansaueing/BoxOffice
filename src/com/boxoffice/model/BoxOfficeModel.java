@@ -2,8 +2,6 @@ package com.boxoffice.model;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -19,8 +17,8 @@ import com.boxoffice.httputils.HttpUtils;
 public class BoxOfficeModel {
 
 	/**
-	 * »ñÈ¡ÊµÊ±Æ±·¿µÄÊý¾Ý
-	 * @return ·â×°ÁËBoxOfficeInfoµÄ¼¯ºÏ
+	 * ï¿½ï¿½È¡ÊµÊ±Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @return ï¿½ï¿½×°ï¿½ï¿½BoxOfficeInfoï¿½Ä¼ï¿½ï¿½ï¿½
 	 */
 	public List<BoxOfficeInfo> getRealtimeBoxInfo() {
 		List<BoxOfficeInfo> boxOfficeInfos = new ArrayList<BoxOfficeInfo>();
@@ -54,8 +52,8 @@ public class BoxOfficeModel {
 	}
 
 	/**
-	 * »ñÈ¡ÖÜÄ©Æ±·¿µÄÊý¾Ý
-	 * @return ·â×°ÁËWeekendBOÊý¾ÝµÄ¼¯ºÏ
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ä©Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @return ï¿½ï¿½×°ï¿½ï¿½WeekendBOï¿½ï¿½ï¿½ÝµÄ¼ï¿½ï¿½ï¿½
 	 */
 	public List<WeekendBO> getWeekendBOInfo() {
 		List<WeekendBO> weekendBOs = new ArrayList<WeekendBO>();
@@ -83,8 +81,8 @@ public class BoxOfficeModel {
 	}
 	
 	/**
-	 * »ñÈ¡ÖÜÆ±·¿Êý¾Ý
-	 * @return ·â×°ÁËÖÜÆ±·¿Êý¾ÝµÄ¼¯ºÏ
+	 * ï¿½ï¿½È¡ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @return ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ¼ï¿½ï¿½ï¿½
 	 */
 	public List<WeekBO> getWeekBOInfo() {
 		List<WeekBO> weekBOs = new ArrayList<WeekBO>();

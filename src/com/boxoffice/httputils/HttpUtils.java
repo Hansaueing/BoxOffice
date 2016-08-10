@@ -10,14 +10,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 
 
 
 /**
- * ·â×°Ò»Ð©¾²Ì¬·½·¨¹©ÆäËûÀàµ÷ÓÃ ex:get/post
+ * ï¿½ï¿½×°Ò»Ð©ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ex:get/post
  * 
  * @author Administrator
  * 
@@ -27,12 +24,12 @@ public class HttpUtils {
 	/**
 	 * 
 	 * @param is
-	 *            ´Ó·þÎñ¶Ë»ñÈ¡µÄÊäÈëÁ÷
-	 * @return ·µ»Ø×Ö·û´®
+	 *            ï¿½Ó·ï¿½ï¿½ï¿½Ë»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	 */
 	public static String getStr(InputStream is) {
 		StringBuffer buff = new StringBuffer();
-		// Á÷µÄ°ü×°
+		// ï¿½ï¿½ï¿½Ä°ï¿½×°
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		String line;
 		try {
@@ -47,7 +44,7 @@ public class HttpUtils {
 		return buff.toString();
 	}
 	/**
-	 * post·½Ê½»ñÈ¡ÊäÈëÁ÷
+	 * postï¿½ï¿½Ê½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public static InputStream postIs(String path,String parma){
@@ -74,7 +71,7 @@ public class HttpUtils {
 	}
 	
 	/**
-	 * get·½Ê½»ñÈ¡ÊäÈëÁ÷
+	 * getï¿½ï¿½Ê½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public static InputStream getIs(String path){
@@ -110,7 +107,7 @@ public class HttpUtils {
 	 * @param path
 	 * @param param
 	 * @return
-	 * Í¨¹ýpostÇëÇó»ñÈ¡ÊäÈëÁ÷
+	 * Í¨ï¿½ï¿½postï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static InputStream  postLogin(String path,String param,String cookie){
 		InputStream is=null;
@@ -119,12 +116,12 @@ public class HttpUtils {
 			URL url=new URL(path);
 			//conn
 			HttpURLConnection conn=(HttpURLConnection) url.openConnection();
-			//ÇëÇó·½·¨
+			//ï¿½ï¿½ï¿½ó·½·ï¿½
 			conn.setRequestMethod("POST");
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
 			conn.setUseCaches(false);
-			//·µ»Øcookid
+			//ï¿½ï¿½ï¿½ï¿½cookid
 			conn.setRequestProperty("Cookie", cookie);
 			OutputStream os=conn.getOutputStream();
 			os.write(param.getBytes("utf-8"));

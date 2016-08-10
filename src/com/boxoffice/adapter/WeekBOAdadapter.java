@@ -65,8 +65,8 @@ public class WeekBOAdadapter extends BaseAdapter {
 		}
 
 		holder.tvMovieName.setText(info.getName());
-		holder.tvWeekSum.setText("ÖÜÆ±·¿:" + info.getWeekSum() + "	Íò");
-		holder.tvWeekPeriod.setText("ÈÕ		ÆÚ:" + info.getWeekPeriod());
+		holder.tvWeekSum.setText("å‘¨æœ«ç¥¨æˆ¿:" + info.getWeekSum() + "	ä¸‡");
+		holder.tvWeekPeriod.setText("ç»Ÿè®¡æ—¥æœŸ:" + info.getWeekPeriod());
 
 		return convertView;
 	}

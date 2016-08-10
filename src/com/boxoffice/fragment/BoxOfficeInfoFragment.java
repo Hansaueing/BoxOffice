@@ -3,6 +3,8 @@ package com.boxoffice.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,10 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
-import android.webkit.WebView.FindListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -49,7 +50,9 @@ public class BoxOfficeInfoFragment extends Fragment {
 	private RelativeLayout rlLoadimg;
 	private ImageView ivLoadImg;
 
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
+		@SuppressWarnings("unchecked")
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case 0:
@@ -76,17 +79,18 @@ public class BoxOfficeInfoFragment extends Fragment {
 		};
 	};
 
+	@SuppressLint("InflateParams")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment, null);
+		View v = inflater.inflate(R.layout.fragment_boxoffice, null);
 
 		init(v);
 		
 		setAnimation();
 		
 		showRealtimeBO();
-		Log.i("han", "Ö±½Ó¼ÓÔØÊý¾Ý");
+		Log.i("han", "Ö±ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		setListener();
 
 		return v;
@@ -102,6 +106,8 @@ public class BoxOfficeInfoFragment extends Fragment {
 		lvBoxoffice = (ListView) v.findViewById(R.id.lv_boxofficeinfo);
 		rlLoadimg = (RelativeLayout) v.findViewById(R.id.rl_loadimg);
 		ivLoadImg = (ImageView) v.findViewById(R.id.iv_loadimg);
+		
+		showButtonMark(rb1);
 	}
 
 	private void setListener() {
@@ -112,26 +118,35 @@ public class BoxOfficeInfoFragment extends Fragment {
 				switch (checkedId) {
 				case R.id.rb_realtime_box:
 					setAnimation();
-					Log.i("info", "µã»÷ÊµÊ±Æ±·¿°´Å¥¼ÓÔØÊý¾Ý");
+					Log.i("info", "ï¿½ï¿½ï¿½ÊµÊ±Æ±ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+					showButtonMark(rb1);
 					showRealtimeBO();
 					break;
 				case R.id.rb_weekend_box:
 					setAnimation();
-					Log.i("info", "ÖÜÄ©Æ±·¿°´Å¥¼ÇÔØÊý¾Ý");
+					Log.i("info", "ï¿½ï¿½Ä©Æ±ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+					showButtonMark(rb2);
 					showWeekend();
 					break;
 				case R.id.rb_overweek_box:
 					setAnimation();
-					Log.i("info", "ÖÜÆ±·¿Êý¾Ý");
+					Log.i("info", "ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+					showButtonMark(rb3);
 					showWeek();
 					break;
 				}
 			}
 		});
 	}
+	private void showButtonMark(Button whichButton){
+		rb1.setTextColor(Color.BLACK);
+		rb2.setTextColor(Color.BLACK);
+		rb3.setTextColor(Color.BLACK);
+		whichButton.setTextColor(Color.GRAY);
+	}
 
 	/**
-	 * »ñÈ¡ÊµÊ±Æ±·¿µÄÊý¾Ý
+	 * ï¿½ï¿½È¡ÊµÊ±Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void showRealtimeBO() {
 		new Thread(new Runnable() {
@@ -145,7 +160,7 @@ public class BoxOfficeInfoFragment extends Fragment {
 	}
 
 	/**
-	 * »ñÈ¡ÖÜÄ©Æ±·¿µÄÊý¾Ý
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ä©Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void showWeekend() {
 		new Thread(new Runnable() {
@@ -169,7 +184,7 @@ public class BoxOfficeInfoFragment extends Fragment {
 		}).start();
 	}
 	/**
-	 * ¼ÓÔØµÈ´ýÊý¾ÝµÄ¶¯»­
+	 * ï¿½ï¿½ï¿½ØµÈ´ï¿½ï¿½ï¿½ï¿½ÝµÄ¶ï¿½ï¿½ï¿½
 	 */
 	private void setAnimation(){
 		if(lvBoxoffice.getVisibility()==View.INVISIBLE){
