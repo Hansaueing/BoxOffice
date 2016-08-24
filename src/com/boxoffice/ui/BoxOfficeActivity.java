@@ -3,7 +3,6 @@ package com.boxoffice.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.boxoffice.R;
 import com.boxoffice.R.id;
 import com.boxoffice.R.layout;
 import com.boxoffice.fragment.PersonalInfoFragment;

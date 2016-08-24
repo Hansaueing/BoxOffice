@@ -3,15 +3,6 @@ package com.boxoffice.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.boxoffice.R;
-import com.boxoffice.R.id;
-import com.boxoffice.R.layout;
-import com.boxoffice.fragment.PersonalInfoFragment;
-import com.boxoffice.fragment.CinemaNearbyFragment;
-import com.boxoffice.fragment.ShowRecentlyFragment;
-import com.boxoffice.fragment.BoxOfficeInfoFragment;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,6 +11,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+
+import com.boxoffice.R;
+import com.boxoffice.fragment.BoxOfficeInfoFragment;
+import com.boxoffice.fragment.CinemaNearbyFragment;
+import com.boxoffice.fragment.PersonalInfoFragment;
+import com.boxoffice.fragment.ShowRecentlyFragment;
 
 public class BoxOfficeActivity extends FragmentActivity {
 
@@ -30,7 +27,7 @@ public class BoxOfficeActivity extends FragmentActivity {
 	private BoxOfficeInfoFragment boxOfficeInfoFragment;
 	private PersonalInfoFragment personalInfoFragment;
 
-	//点击控件
+	//点击控件,Github
 	private RadioGroup rg;
 	private ViewPager viewPager;
 	@Override
