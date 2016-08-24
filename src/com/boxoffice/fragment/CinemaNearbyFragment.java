@@ -52,10 +52,8 @@ public class CinemaNearbyFragment extends Fragment implements OnClickListener,On
 	private MyLocationData locData;
 	private LatLng point;
 	boolean isFirstLoc = true;
-	// 检索功能控件
 	private Button btnSearch;
 	private PoiSearch poiSearch;
-	// maker监听
 	
 
 	@Override
@@ -90,7 +88,7 @@ public class CinemaNearbyFragment extends Fragment implements OnClickListener,On
 		client.start();
 		// 添加地图标记点击监听
 		mBaiduMap.setOnMapClickListener(this);
-
+		// 测试SourceTree
 		return v;
 	}
 
