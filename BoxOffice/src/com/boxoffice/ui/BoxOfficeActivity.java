@@ -27,7 +27,7 @@ public class BoxOfficeActivity extends FragmentActivity {
 	private BoxOfficeInfoFragment boxOfficeInfoFragment;
 	private PersonalInfoFragment personalInfoFragment;
 
-	//点击控件,Github
+	//点击控件,试试github版本管理工具有效性
 	private RadioGroup rg;
 	private ViewPager viewPager;
 	@Override
