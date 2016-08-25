@@ -7,60 +7,71 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ListView;
 
-import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.PoiInfo;
-import com.baidu.mapapi.utils.DistanceUtil;
 import com.boxoffice.R;
-import com.boxoffice.entity.LocationData;
+import com.boxoffice.adapter.NearCinemaAdapter;
 
-public class PoiResultActivity extends Activity implements OnClickListener{
+public class PoiResultActivity extends Activity {
 	
-	private TextView tvCinemaName,tvAddress,tvTel,tvDistance;
-	private ImageView ivGo;
+//	private TextView tvCinemaName,tvAddress,tvTel,tvDistance;
+//	private ImageView ivGo;
+	private ListView listview;
 	
-	private List<PoiInfo> results;
+	private List<PoiInfo> cinemas;
+	private List<String> distances;
 	private int position;
-	private double distance;
+//	private double distance;
+	private int clickPosition;
+	
+	private NearCinemaAdapter adapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_poiinfo);
-		results = (List<PoiInfo>) getIntent().getSerializableExtra("poiResult");
-		position = getIntent().getIntExtra("position", 0);
-		distance = getIntent().getDoubleExtra("distance", 0);
+		setContentView(R.layout.activity_nearcinemas);
+		cinemas = (List<PoiInfo>) getIntent().getSerializableExtra("poiResult");
+		distances = getIntent().getStringArrayListExtra("distances");
+		position = getIntent().getIntExtra("n", 0);
+//		distance = getIntent().getDoubleExtra("distance", 0);
+		
 		Log.i("text", "PoiResultActivity results position="+position);
-		Log.i("text", "PoiResultActivity results.size()="+results.size());
+		Log.i("text", "PoiResultActivity results.size()="+cinemas.size());
+		Log.i("text", "PoiResultActivity distances.size()="+distances.size());
+		
 		
 		init();
 		loadContent();
 		
-		ivGo.setOnClickListener(this);
+//		ivGo.setOnClickListener(this);
 		
 	}
 	private void loadContent() {
-		tvCinemaName.setText("影院名称:"+results.get(position).name);
-		tvAddress.setText("详细地址:"+results.get(position).address);
-		tvTel.setText("联系方式:"+results.get(position).phoneNum);
-		tvDistance.setText("距离本地:"+String.valueOf((int)distance)+"米");
+		
+		listview.setAdapter(adapter);
 		
 	}
+
+	
 	private void init() {
-		tvCinemaName = (TextView) findViewById(R.id.tv_cinema_name);
-		tvAddress = (TextView) findViewById(R.id.tv_cinema_address);
-		tvTel = (TextView) findViewById(R.id.tv_cinema_tel);
-		tvDistance = (TextView) findViewById(R.id.tv_distance);
 		
-		
-		ivGo = (ImageView) findViewById(R.id.iv_go);
+		listview = (ListView) findViewById(R.id.lv_near_cinema);
+		adapter = new NearCinemaAdapter(cinemas,this,distances,new IVListener());
 		
 	}
-	@Override
-	public void onClick(View v) {
-		Log.i("han", "去这里");
+	
+	public class IVListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			Log.i("text", "call finish()");
+			PoiResultActivity.this.finish();
+			
+		}
 		
 	}
+	
+	
+	
 }

@@ -1,6 +1,7 @@
 package com.boxoffice.fragment;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -52,8 +53,10 @@ public class CinemaNearbyFragment extends Fragment implements OnClickListener,On
 	private MyLocationData locData;
 	private LatLng point;
 	boolean isFirstLoc = true;
+	// 检索功能控件
 	private Button btnSearch;
 	private PoiSearch poiSearch;
+	// maker监听
 	
 
 	@Override
@@ -88,7 +91,7 @@ public class CinemaNearbyFragment extends Fragment implements OnClickListener,On
 		client.start();
 		// 添加地图标记点击监听
 		mBaiduMap.setOnMapClickListener(this);
-		// 测试SourceTree
+
 		return v;
 	}
 
@@ -162,6 +165,7 @@ public class CinemaNearbyFragment extends Fragment implements OnClickListener,On
 	
 
 	private List<PoiInfo> results;
+	private List<String> distances = new ArrayList<String>();
 
 	@Override
 	public void onClick(View v) {
@@ -197,10 +201,7 @@ public class CinemaNearbyFragment extends Fragment implements OnClickListener,On
 							MapStatus.Builder builder = new MapStatus.Builder();
 							builder.target(point).zoom(16.0f);
 							mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-							// 给标记位置添加监听
-							
-							
-							
+							// 给标记位置添加监听			
 						}
 
 						Log.i("text", "地点:" + poiname + ",详细地址:" + poiadd
@@ -231,24 +232,31 @@ public class CinemaNearbyFragment extends Fragment implements OnClickListener,On
 		Log.i("han", System.currentTimeMillis()+"	click a position");
 		if( results != null){
 			for(int n=0; n<results.size(); n++){
-				double distanceClick = DistanceUtil.getDistance(arg0, results.get(n).location);
-				double distance = DistanceUtil.getDistance(point, results.get(n).location);
+				int distance = (int) DistanceUtil.getDistance(point, results.get(n).location);
+				distances.add(String.valueOf(distance));
+				}
+			
+			for(int n=0; n<results.size(); n++){
+				double distanceClick= DistanceUtil.getDistance(arg0, results.get(n).location);
 				if(distanceClick<300.0){
 					Log.i("han",System.currentTimeMillis()+ "	click maked position");
 					Log.i("han", "n="+n);
-					Intent intent = new Intent(getActivity(),PoiResultActivity.class);
-					intent.putExtra("poiResult", (Serializable) results);
-					intent.putExtra("position", n);
-					intent.putExtra("distance", distance);
-//					LocationData locationData = new LocationData(point);
-//					intent.putExtra("point", (Serializable)locationData);
 					Log.i("text", "trans activity");
+					
+					Intent intent = new Intent(getActivity(),PoiResultActivity.class);
+					intent.putExtra("poiResult",(Serializable) results);
+					intent.putStringArrayListExtra("distances", (ArrayList<String>) distances);
+					intent.putExtra("n", n);
+					
 					startActivity(intent);
 					break;
 				}else{
 					Log.i("han",System.currentTimeMillis()+ "	click unmaked position");
 				}
 			}
+				
+				
+			
 			Log.i("han", "===============");
 		}
 		
