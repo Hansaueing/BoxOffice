@@ -80,6 +80,6 @@ public class PoiResultActivity extends Activity implements OnItemClickListener{
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Log.i("chenjia", ""+position);
-		
+		Log.i("chenjia", "change boxoffice in windows by chen");
 	}	
 }
