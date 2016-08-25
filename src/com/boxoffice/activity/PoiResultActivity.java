@@ -7,13 +7,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.boxoffice.R;
 import com.boxoffice.adapter.NearCinemaAdapter;
 
-public class PoiResultActivity extends Activity {
+public class PoiResultActivity extends Activity implements OnItemClickListener{
 	
 //	private TextView tvCinemaName,tvAddress,tvTel,tvDistance;
 //	private ImageView ivGo;
@@ -23,7 +25,7 @@ public class PoiResultActivity extends Activity {
 	private List<String> distances;
 	private int position;
 //	private double distance;
-	private int clickPosition;
+//	private int clickPosition;
 	
 	private NearCinemaAdapter adapter;
 	
@@ -43,12 +45,15 @@ public class PoiResultActivity extends Activity {
 		
 		init();
 		loadContent();
-		
+		setListener();
 //		ivGo.setOnClickListener(this);
 		
 	}
+	private void setListener(){
+		listview.setOnItemClickListener(this);
+	}
+	
 	private void loadContent() {
-		
 		listview.setAdapter(adapter);
 		
 	}
@@ -67,11 +72,14 @@ public class PoiResultActivity extends Activity {
 		public void onClick(View v) {
 			Log.i("text", "call finish()");
 			PoiResultActivity.this.finish();
-			
 		}
 		
 	}
-	
-	
-	
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Log.i("chenjia", ""+position);
+		
+	}	
 }
